@@ -20,3 +20,12 @@
 		SirapPort (-Si)   Port for SIRAP receiver [Default='10001']
 		Period (-P)       Fetch new punches every period (milliseconds) [Default='5000']
 		Timeout (-T)      Connection timeout for connection to SportIdent Center [Default='10000']
+
+	Punch -options - Send a single punch manually
+
+		Option            Description
+		Control (-C)      Control/station code
+		Chip (-Ch)        Chip/card number
+		Time (-T)         Punch time (local time). Defaults to the current time if omitted
+		SirapHost (-S)    Host for SIRAP receiver [Default='127.0.0.1']
+		SirapPort (-Si)   Port for SIRAP receiver [Default='10001']

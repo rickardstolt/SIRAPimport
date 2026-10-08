@@ -94,5 +94,25 @@ namespace SIRAPimport
                 Log.WithProperty("afterId", args.AfterId).Fatal(ex, $"Failed to execute action {nameof(SportIdentCenter)}.");
             }
         }
+
+        [ArgActionMethod, ArgDescription("Send a single punch manually")]
+        public async Task Punch(PunchArgs args)
+        {
+            try
+            {
+                var punchTime = args.Time != DateTime.MinValue ? args.Time : DateTime.Now;
+
+                using (var sirapClient = new SirapClient(new IPEndPoint(IPAddress.Parse(args.SirapHost), args.SirapPort)))
+                {
+                    await sirapClient.SendPunch(args.Control, punchTime, args.Chip);
+                }
+
+                Log.Info($"Punch\t{args.Control}\t{args.Chip}\t{punchTime.ToString("yyyy-MM-dd HH:mm:ss")}");
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, $"Failed to execute action {nameof(Punch)}.");
+            }
+        }
     }
 }

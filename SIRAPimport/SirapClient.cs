@@ -27,7 +27,7 @@ namespace SIRAPimport
 
                 await SendSirapPunch(chipNo, punchTime, control, tcpClient);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 tcpClient.Close();
                 tcpClient = null;
